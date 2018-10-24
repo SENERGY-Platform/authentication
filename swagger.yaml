@@ -1,0 +1,42 @@
+swagger: "2.0"
+info:
+  description: "Authentication and authorization API. Uses OAuth 2.0 and Open ID Connect. More informations: https://www.keycloak.org/docs/3.3/server_admin/topics/sso-protocols/oidc.html"
+  version: "1.0.0"
+  title: "Keycloak"
+host: "auth.sepl.infai.org"
+basePath: "/auth"
+schemes:
+- "https"
+paths:
+  /realms/master/protocol/openid-connect/token:
+    post:
+      parameters: 
+        - name: grant_type
+          in: formData
+          description: OAuth grant type for example password
+          required: true
+          type: string
+        - name: username
+          in: formData
+          description: Your username
+          required: true
+          type: string
+        - name: password
+          in: formData
+          description: Your password
+          required: true
+          type: string
+        - name: client_id
+          in: formData
+          description: Your OAuth client id 
+          required: true
+          type: string
+      tags:
+        - "Get token"
+      summary: ""
+      description: "API for retrieving an access token and id token. If you want use the password flow, you have to set grant_type to 'password'. If you want to use the authorization code flow, you have to set grant_type to 'code'"
+      produces:
+        - "application/json"
+      responses:
+        200:
+          description: "Returns access token and id token"
