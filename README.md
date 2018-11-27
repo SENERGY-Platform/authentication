@@ -21,7 +21,7 @@ docker run -e KEYCLOAK_USER=<USERNAME> -e KEYCLOAK_PASSWORD=<PASSWORD> -p 8080:8
 Done by config file
 - Create client for platofrm web ui with name "frontend" 
 - Create client for Auth Admin Frontend with name "auth-frontend"
-- Add Redirect URI for both (eg. http://fgseitsrancher.wifa.intern.uni-leipzig.de:8086/*)
+- Add Redirect URI for both
 - Add Web Origins for CORS 
 - under "Clients - Mappers" add user role to the token, so that the tokens have the property role, important for authorization
 
