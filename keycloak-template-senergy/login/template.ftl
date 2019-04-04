@@ -6,7 +6,7 @@
         <meta charset="utf-8">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="robots" content="noindex, nofollow">
-        <title>SEPL | Login</title>
+        <title>SENERGY | Login</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
@@ -41,7 +41,7 @@
             .toolbar {
                 width: 100%;
                 height: 64px;
-                background-color: rgb(68, 132 ,206);
+                background-color: rgb(255, 255, 255);
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
