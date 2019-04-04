@@ -41,7 +41,7 @@
             .toolbar {
                 width: 100%;
                 height: 64px;
-                background-color: rgb(217, 217, 217);
+                background-color: rgb(68, 132 ,206);
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
@@ -162,7 +162,7 @@
     <body class="${properties.kcBodyClass!}">
         <div class="toolbar">
         <div>
-            <img class="logo" src="${url.resourcesPath}/img/logo.svg">
+            <img class="logo" src="${url.resourcesPath}/img/logo.png">
         </div>
             <#if realm.internationalizationEnabled>
                 <div id="kc-locale" class="${properties.kcLocaleClass!}">
