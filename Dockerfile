@@ -37,6 +37,7 @@ RUN sed -i -e 's/<http-listener name="default" socket-binding="http" redirect-so
 EXPOSE 8080
 
 COPY keycloak-template /opt/jboss/keycloak/themes/sepl-template
+COPY keycloak-template-senergy /opt/jboss/keycloak/themes/senergy-template
 
 ENTRYPOINT [ "/opt/jboss/docker-entrypoint.sh" ]
 
