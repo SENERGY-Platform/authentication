@@ -1,7 +1,24 @@
-FROM jboss/keycloak:15.0.2
-COPY keycloak-template /opt/jboss/keycloak/themes/sepl-template
-COPY keycloak-template-senergy /opt/jboss/keycloak/themes/senergy-template
-COPY keycloak-platonam-template /opt/jboss/keycloak/themes/platonam-template
+FROM quay.io/keycloak/keycloak:17.0.0 as builder
+ENV KC_DB=postgres
+ENV KC_FEATURES token-exchange,admin-fine-grained-authz
+ENV KC_HTTP_ENABLED true
+ENV KC_HOSTNAME_STRICT false
+ENV KC_HTTP_RELATIVE_PATH /auth
+ENV KC_PROXY passthrough
+RUN /opt/keycloak/bin/kc.sh build
+
+FROM quay.io/keycloak/keycloak:17.0.0
+COPY --from=builder /opt/keycloak/lib/quarkus/ /opt/keycloak/lib/quarkus/
+COPY keycloak-template /opt/keycloak/themes/sepl-template
+COPY keycloak-template-senergy /opt/keycloak/themes/senergy-template
+COPY keycloak-platonam-template /opt/keycloak/themes/platonam-template
 USER 0:0
-RUN chown 1000:1000 -R /opt/jboss/keycloak/themes
+RUN chown 1000:1000 -R /opt/keycloak/themes
 USER 1000:1000
+ENV KC_DB=postgres
+ENV KC_FEATURES token-exchange,admin-fine-grained-authz
+ENV KC_HTTP_ENABLED true
+ENV KC_HOSTNAME_STRICT false
+ENV KC_HTTP_RELATIVE_PATH /auth
+ENV KC_PROXY passthrough
+ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start"]
