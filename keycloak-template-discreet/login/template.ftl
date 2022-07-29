@@ -35,7 +35,7 @@
             }
 
             .logo {
-                height: 48px;
+                height: 100px;
             }
 
             .toolbar {
