@@ -6,7 +6,7 @@
         <meta charset="utf-8">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="robots" content="noindex, nofollow">
-        <title>SEPL | Login</title>
+        <title>Discreet | Login</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
@@ -62,12 +62,12 @@
             .mdl-textfield--floating-label.is-focused .mdl-textfield__label,
             .mdl-textfield--floating-label.is-dirty .mdl-textfield__label,
             .mdl-textfield--floating-label.has-placeholder .mdl-textfield__label {
-                color: rgb(46, 125, 50) !important;
+                color: #2B787D !important;
             }
 
           
             .mdl-textfield__label:after {
-               background-color: rgb(46, 125, 50)!important;
+               background-color: #2B787D !important;
             }
 
             .login_outer {
@@ -90,16 +90,16 @@
             }
 
             .is-focused {
-                color: rgb(46, 125, 50);
+                color: #2B787D;
             }
 
             .mdl-button--raised {
-                background: rgb(46, 125, 50);
+                background: #2B787D;
                 color: white;
             }
 
             .mdl-button--raised:hover {
-                background: rgb(59, 165, 65);
+                background: #2B787D;
             }
 
             i {
@@ -162,7 +162,7 @@
     <body class="${properties.kcBodyClass!}">
         <div class="toolbar">
         <div>
-            <img class="logo" src="${url.resourcesPath}/img/logo.svg">
+            <img class="logo" src="${url.resourcesPath}/img/discreet_logo.png">
         </div>
             <#if realm.internationalizationEnabled>
                 <div id="kc-locale" class="${properties.kcLocaleClass!}">

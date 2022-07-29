@@ -31,7 +31,6 @@
 </div>
 
 <div class="image_outer">
-<img src="${url.resourcesPath}/img/discreet_logo.png"/>
 <img src="${url.resourcesPath}/img/logobmbf.svg"/>
 <img src="${url.resourcesPath}/img/logosab.svg"/>
 </div>
