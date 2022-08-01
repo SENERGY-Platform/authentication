@@ -35,7 +35,8 @@
             }
 
             .logo {
-                height: 100px;
+                height: 162px;
+                margin-top: 57px;
             }
 
             .toolbar {
@@ -82,10 +83,12 @@
 
             .image_outer img:nth-child(1) {
                 margin-right: 10px;
+                height: 60px;
             }
 
             .image_outer img:nth-child(2) {
                 margin-left: 10px;
+                height: 60px;
             }
 
             .is-focused {
