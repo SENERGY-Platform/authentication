@@ -30,9 +30,4 @@
 </form>
 </div>
 
-<div class="image_outer">
-<img src="${url.resourcesPath}/img/image_1.jpeg"/>
-<img src="${url.resourcesPath}/img/image_2.svg"/>
-</div>
-
 </@layout.registrationLayout>

@@ -41,7 +41,7 @@
             .toolbar {
                 width: 100%;
                 height: 64px;
-                background-color: rgb(68, 132 ,206);
+                background-color: lightgrey;
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
