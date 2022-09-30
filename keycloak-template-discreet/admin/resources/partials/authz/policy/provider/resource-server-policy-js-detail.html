@@ -1,6 +1,3 @@
-<style>
-    .ace_editor { height: 200px; }
-</style>
 <div class="col-sm-9 col-md-10 col-sm-push-3 col-md-push-2">
 
     <ol class="breadcrumb">
@@ -8,6 +5,8 @@
         <li><a href="#/realms/{{realm.realm}}/clients/{{client.id}}">{{client.clientId}}</a></li>
         <li><a href="#/realms/{{realm.realm}}/clients/{{client.id}}/authz/resource-server">{{:: 'authz-authorization' | translate}}</a></li>
         <li><a href="#/realms/{{realm.realm}}/clients/{{client.id}}/authz/resource-server/policy">{{:: 'authz-policies' | translate}}</a></li>
+        <li data-ng-show="policyState.state.policy.name != null && historyBackOnSaveOrCancel">{{policyState.state.policy.name}}</li>
+        <li data-ng-show="policyState.state.policy.name == null && historyBackOnSaveOrCancel">{{:: policyState.state.previousPage.name | translate}}</li>
         <li data-ng-show="create">{{:: 'authz-add-js-policy' | translate}}</li>
         <li data-ng-hide="create">JavaScript</li>
         <li data-ng-hide="create">{{originalPolicy.name}}</li>
@@ -21,21 +20,23 @@
             <div class="form-group">
                 <label class="col-md-2 control-label" for="name">{{:: 'name' | translate}} <span class="required">*</span></label>
                 <div class="col-sm-6">
-                    <input class="form-control" type="text" id="name" name="name" data-ng-model="policy.name" autofocus required data-ng-blur="checkNewNameAvailability()">
+                    <input class="form-control" type="text" id="name" name="name" data-ng-model="policy.name" autofocus required data-ng-blur="checkNewNameAvailability()" data-ng-disabled="readOnly">
                 </div>
                 <kc-tooltip>{{:: 'authz-policy-name.tooltip' | translate}}</kc-tooltip>
             </div>
             <div class="form-group">
                 <label class="col-md-2 control-label" for="description">{{:: 'description' | translate}} </label>
                 <div class="col-sm-6">
-                    <input class="form-control" type="text" id="description" name="description" data-ng-model="policy.description">
+                    <input class="form-control" type="text" id="description" name="description" data-ng-model="policy.description" data-ng-disabled="readOnly">
                 </div>
                 <kc-tooltip>{{:: 'authz-policy-description.tooltip' | translate}}</kc-tooltip>
             </div>
             <div class="form-group">
                 <label class="col-md-2 control-label" for="code">{{:: 'authz-policy-js-code' | translate}} </label>
                 <div class="col-sm-6">
-                    <div ui-ace="{ onLoad : initEditor }" id="code" data-ng-model="policy.code"></div>
+                    <textarea id="code" data-ng-model="policy.code" class="form-control" readonly>
+                       {{policy.code}}
+    		        </textarea>
                 </div>
                 <kc-tooltip>{{:: 'authz-policy-js-code.tooltip' | translate}}</kc-tooltip>
             </div>
@@ -44,7 +45,7 @@
 
                 <div class="col-sm-1">
                     <select class="form-control" id="logic"
-                            data-ng-model="policy.logic">
+                            data-ng-model="policy.logic" data-ng-disabled="readOnly">
                         <option value="POSITIVE">{{:: 'authz-policy-logic-positive' | translate}}</option>
                         <option value="NEGATIVE">{{:: 'authz-policy-logic-negative' | translate}}</option>
                     </select>

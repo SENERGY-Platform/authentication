@@ -1,5 +1,4 @@
-<html>
-<body>
-${msg("eventLoginErrorBodyHtml",event.date,event.ipAddress)?no_esc}
-</body>
-</html>
+<#import "template.ftl" as layout>
+<@layout.emailLayout>
+${kcSanitize(msg("eventLoginErrorBodyHtml",event.date,event.ipAddress))?no_esc}
+</@layout.emailLayout>

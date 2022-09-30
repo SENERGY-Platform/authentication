@@ -1,5 +1,4 @@
-<html>
-<body>
-${msg("emailVerificationBodyHtml",link, linkExpiration, realmName)?no_esc}
-</body>
-</html>
+<#import "template.ftl" as layout>
+<@layout.emailLayout>
+${kcSanitize(msg("emailVerificationBodyHtml",link, linkExpiration, realmName, linkExpirationFormatter(linkExpiration)))?no_esc}
+</@layout.emailLayout>

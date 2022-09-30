@@ -35,13 +35,13 @@
             }
 
             .logo {
-                height: 48px;
+                height: 162px;
+                margin-top: 57px;
             }
 
             .toolbar {
                 width: 100%;
                 height: 64px;
-                background-color: rgb(46, 125, 50);
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
@@ -83,10 +83,12 @@
 
             .image_outer img:nth-child(1) {
                 margin-right: 10px;
+                height: 60px;
             }
 
             .image_outer img:nth-child(2) {
                 margin-left: 10px;
+                height: 60px;
             }
 
             .is-focused {
