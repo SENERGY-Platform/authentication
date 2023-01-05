@@ -8,8 +8,8 @@
         <meta name="robots" content="noindex, nofollow">
         <title>OPTIMISE | Login</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+        <link rel="stylesheet" href="${url.resourcesPath}/material/icons.css">
+        <link rel="stylesheet" href="${url.resourcesPath}/material/material.indigo-pink.min.css">
         <style>
             .form_outer {
                 display: flex;
@@ -132,7 +132,7 @@
             }
         </style>
 
-        <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+        <script defer src="${url.resourcesPath}/material/material.min.js"></script>
         <#if properties.meta?has_content>
             <#list properties.meta?split( ' ') as meta>
                 <meta name="${meta?split('==')[0]}" content="${meta?split('==')[1]}" />
