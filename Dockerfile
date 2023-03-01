@@ -14,6 +14,7 @@ COPY keycloak-template-senergy /opt/keycloak/themes/senergy-template
 COPY keycloak-template-optimise /opt/keycloak/themes/optimise-template
 COPY keycloak-platonam-template /opt/keycloak/themes/platonam-template
 COPY keycloak-template-smartador /opt/keycloak/themes/smartador-template
+COPY keycloak-template-discreet /opt/keycloak/themes/discreet-template
 USER 0:0
 RUN chown 1000:1000 -R /opt/keycloak/themes
 USER 1000:1000
