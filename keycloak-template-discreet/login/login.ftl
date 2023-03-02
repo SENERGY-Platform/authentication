@@ -4,7 +4,7 @@
         ${msg("loginAccountTitle")}
     <#elseif section = "form">
     <div class="form_outer" id="kc-form">
-      <div id="kc-form-wrapper">
+      <!-- div id="kc-form-wrapper"-->
         <#if realm.password>
             <form class="mdl-shadow--2dp" id="kc-form-login" onsubmit="login.disabled = true; return true;" action="${url.loginAction}" method="post">
                 <#if !usernameHidden??>
@@ -64,7 +64,7 @@
 
                   <div id="kc-form-buttons" class="${properties.kcFormGroupClass!}">
                       <input type="hidden" id="id-hidden-input" name="credentialId" <#if auth.selectedCredential?has_content>value="${auth.selectedCredential}"</#if>/>
-                      <input tabindex="4" class="${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonBlockClass!} ${properties.kcButtonLargeClass!}" name="login" id="kc-login" type="submit" value="${msg("doLogIn")}"/>
+                     <!-- <input tabindex="4" class="${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonBlockClass!} ${properties.kcButtonLargeClass!}" name="login" id="kc-login" type="submit" value="${msg("doLogIn")}"/> -->
                   </div>
 
         <#if message?has_content>
@@ -72,7 +72,7 @@
         </#if>
 
         <div class="login_outer">
-            <input name="login" class="button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" type="submit" value="${msg(" Login ")}"/>
+            <input name="login" class="button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" type="submit" value="${msg("doLogIn")}"/>
         <#if realm.registrationAllowed> 
             <a tabindex="6" href="${url.registrationUrl}">
                 <span class="button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">${msg("doRegister")}</span>
@@ -81,13 +81,14 @@
         </div>
     </form>
     </#if>
-    </div>
+    <!--/div -->
 
+    
+
+    </div>
     <div class="image_outer">
     <img src="${url.resourcesPath}/img/logobmbf.svg"/>
     <img src="${url.resourcesPath}/img/logosab.svg"/>
-    </div>
-
     </div>
     <#elseif section = "info" >
         <#if realm.password && realm.registrationAllowed && !registrationDisabled??>

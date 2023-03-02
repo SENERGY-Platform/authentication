@@ -8,133 +8,6 @@
         <meta name="robots" content="noindex, nofollow">
         <title>Discreet | Login</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
-        <style>
-            .form_outer {
-                display: flex;
-                justify-content: center;
-            }
-
-            form {
-                display: flex;
-                flex-direction: column;
-                margin: 50px 0;
-                padding: 20px;
-                width: 35%;
-            }
-
-            form label,
-            form input {
-                width: 100%;
-            }
-
-            form .button {
-                width: 150px;
-                padding: 0;
-            }
-
-            .logo {
-                height: 162px;
-                margin-top: 57px;
-            }
-
-            .toolbar {
-                width: 100%;
-                height: 64px;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-            }
-
-            .toolbar > div:nth-child(1) {
-                margin-left: 10px;
-            }
-
-            .toolbar > div:nth-child(2) {
-                margin-right: 10px;
-            }
-
-            .mdl-textfield {
-                width: 100%;
-            }
-
-            .mdl-textfield--floating-label.is-focused .mdl-textfield__label,
-            .mdl-textfield--floating-label.is-dirty .mdl-textfield__label,
-            .mdl-textfield--floating-label.has-placeholder .mdl-textfield__label {
-                color: #2B787D !important;
-            }
-
-          
-            .mdl-textfield__label:after {
-               background-color: #2B787D !important;
-            }
-
-            .login_outer {
-                display: flex;
-                justify-content: space-between;
-            }
-
-            .image_outer {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-
-            .image_outer img:nth-child(1) {
-                margin-right: 10px;
-                height: 60px;
-            }
-
-            .image_outer img:nth-child(2) {
-                margin-left: 10px;
-                height: 60px;
-            }
-
-            .is-focused {
-                color: #2B787D;
-            }
-
-            .mdl-button--raised {
-                background: #2B787D;
-                color: white;
-            }
-
-            .mdl-button--raised:hover {
-                background: #2B787D;
-            }
-
-            i {
-                color: white;
-            } 
-
-            a {
-                text-decoration: none;
-            }
-
-            .kc-feedback-text {
-                padding: 0 0 20px;
-            }
-
-            @media screen and (min-width: 1400px) {
-                form {
-                    width: 25%;
-                }
-            }
-
-            @media screen and (max-width: 800px) {
-                form {
-                    width: 85%;
-                }
-
-                .image_outer {
-                    flex-direction: column;
-                }
-
-            }
-        </style>
-
-        <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
         <#if properties.meta?has_content>
             <#list properties.meta?split( ' ') as meta>
                 <meta name="${meta?split('==')[0]}" content="${meta?split('==')[1]}" />
@@ -202,7 +75,7 @@
                 <div id="kc-content" class="${properties.kcContentClass!}">
                     <div id="kc-content-wrapper" class="${properties.kcContentWrapperClass!}">
                         <div id="kc-form" class="${properties.kcFormAreaClass!}">
-                            <div id="kc-form-wrapper" class="${properties.kcFormAreaWrapperClass!}">
+                           <div id="kc-form-wrapper" class="${properties.kcFormAreaWrapperClass!}">
                                 <#nested "form">
                             </div>
                         </div>
