@@ -5,6 +5,7 @@ ENV KC_HTTP_ENABLED true
 ENV KC_HOSTNAME_STRICT false
 ENV KC_HTTP_RELATIVE_PATH /auth
 ENV KC_PROXY passthrough
+ENV KC_CACHE_STACK kubernetes
 RUN /opt/keycloak/bin/kc.sh build
 
 FROM quay.io/keycloak/keycloak:17.0.0
