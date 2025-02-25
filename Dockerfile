@@ -1,28 +1,29 @@
-FROM quay.io/keycloak/keycloak:26.1.2 as builder
+FROM quay.io/keycloak/keycloak:26.1.2 AS builder
 ENV KC_DB=postgres
-ENV KC_FEATURES token-exchange,admin-fine-grained-authz
-ENV KC_HTTP_ENABLED true
-ENV KC_HOSTNAME_STRICT false
-ENV KC_HTTP_RELATIVE_PATH /auth
-ENV KC_PROXY passthrough
-ENV KC_CACHE_STACK kubernetes
+ENV KC_FEATURES=token-exchange,admin-fine-grained-authz
+ENV KC_HTTP_ENABLED=true
+ENV KC_HOSTNAME_STRICT=false
+ENV KC_HTTP_RELATIVE_PATH=/auth
+ENV KC_PROXY=passthrough
+ENV KC_CACHE_STACK=kubernetes
 RUN /opt/keycloak/bin/kc.sh build
+
+FROM node:20.17.0 AS theme-builder
+RUN apt-get update && apt-get install -y maven
+WORKDIR /keycloak-themes
+COPY keycloak-themes/package.json .
+COPY keycloak-themes/yarn.lock .
+RUN yarn install
+COPY keycloak-themes .
+RUN npm run build-keycloak-theme
 
 FROM quay.io/keycloak/keycloak:26.1.2
 COPY --from=builder /opt/keycloak/lib/quarkus/ /opt/keycloak/lib/quarkus/
-COPY keycloak-template /opt/keycloak/themes/sepl-template
-COPY keycloak-template-senergy /opt/keycloak/themes/senergy-template
-COPY keycloak-template-optimise /opt/keycloak/themes/optimise-template
-COPY keycloak-platonam-template /opt/keycloak/themes/platonam-template
-COPY keycloak-template-smartador /opt/keycloak/themes/smartador-template
-COPY keycloak-template-discreet /opt/keycloak/themes/discreet-template
-USER 0:0
-RUN chown 1000:1000 -R /opt/keycloak/themes
-USER 1000:1000
+COPY --from=theme-builder /keycloak-themes/dist_keycloak/keycloak-theme-for-kc-all-other-versions.jar /opt/keycloak/providers/keycloak-theme.jar
 ENV KC_DB=postgres
-ENV KC_FEATURES token-exchange,admin-fine-grained-authz
-ENV KC_HTTP_ENABLED true
-ENV KC_HOSTNAME_STRICT false
-ENV KC_HTTP_RELATIVE_PATH /auth
-ENV KC_PROXY passthrough
+ENV KC_FEATURES=token-exchange,admin-fine-grained-authz
+ENV KC_HTTP_ENABLED=true
+ENV KC_HOSTNAME_STRICT=false
+ENV KC_HTTP_RELATIVE_PATH=/auth
+ENV KC_PROXY=passthrough
 ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start"]
