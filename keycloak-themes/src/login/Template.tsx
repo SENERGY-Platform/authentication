@@ -19,7 +19,6 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
         headerNode,
         socialProvidersNode = null,
         infoNode = null,
-        documentTitle,
         bodyClassName,
         kcContext,
         i18n,
@@ -29,12 +28,15 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
     } = props;
 
     let logoUrl = '';
+    let title = '';
     switch (kcContext.themeName) {
         case "smartador":
             logoUrl = smartadorLogo;
+            title = "smartador";
             break;
         case "senergy":
             logoUrl = senergyLogo;
+            title = "SENERGY";
             break;
         default:
             logoUrl = senergyLogo;
@@ -48,7 +50,7 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
     const { auth, url, message, isAppInitiatedAction } = kcContext;
 
     useEffect(() => {
-        document.title = documentTitle ?? msgStr("loginTitle", kcContext.realm.displayName);
+        document.title = msgStr("loginTitle", title);
     }, []);
 
     useSetClassName({
