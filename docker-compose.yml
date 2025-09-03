@@ -1,0 +1,41 @@
+services:
+  keycloak:
+    build:
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - ${KEYCLOAK_PORT:-8081}:8080
+    environment:
+    - KEYCLOAK_ADMIN=admin
+    - KEYCLOAK_ADMIN_PASSWORD=${KEYCLOAK_ADMIN_PASSWORD:-adminpw}
+    - KC_DB=postgres
+    - KC_DB_URL=jdbc:postgresql://postgres:5432/keycloak
+    - KC_DB_USERNAME=keycloak
+    - KC_DB_PASSWORD=${KEYCLOAK_DB_PASSWORD:-pgpw}
+    - KC_HTTP_RELATIVE_PATH=${KEYCLOAK_RELATIVE_PATH:-/}
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: bash -c ':> /dev/tcp/127.0.0.1/8080'
+      interval: 1s
+      timeout: 3s
+      retries: 30
+  postgres:
+    image: docker.io/library/postgres:16.4-alpine
+    restart: always
+    environment:
+      - PGDATA=/var/lib/postgresql/data/pgdata
+      - POSTGRES_DB=keycloak
+      - POSTGRES_USER=keycloak
+      - POSTGRES_PASSWORD=${KEYCLOAK_DB_PASSWORD:-pgpw}
+    volumes:
+      - pgdata:/var/lib/postgresql/data/pgdata
+    healthcheck:
+      test: pg_isready
+      interval: 1s
+      timeout: 3s
+      retries: 15
+volumes:
+  pgdata:
+
