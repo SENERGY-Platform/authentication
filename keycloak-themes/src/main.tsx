@@ -15,6 +15,12 @@ if (import.meta.env.DEV) {
 }
 */
 
+var link = document.querySelector("link[rel~='icon']") as any;
+if (link && window.kcContext !== undefined) {
+    
+    link.href = link.href.split('/').slice(0, -1).join('/') + '/' + window.kcContext.themeName + '-32x32.png';
+}
+
 createRoot(document.getElementById("root")!).render(
     <StrictMode>
         {!window.kcContext ? (

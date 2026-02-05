@@ -7,6 +7,10 @@ export default defineConfig({
     plugins: [
         react(),
         keycloakify({
+            themeName: [
+                "senergy",
+                "smartador",
+            ],
             accountThemeImplementation: "none"
         })
     ]
