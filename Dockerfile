@@ -11,7 +11,7 @@ ENV KC_CACHE_STACK=kubernetes
 ENV KC_PROXY_HEADERS=xforwarded
 RUN /opt/keycloak/bin/kc.sh build
 
-FROM node:20.17.0 AS theme-builder
+FROM node:24.13.0 AS theme-builder
 RUN apt-get update && apt-get install -y maven
 WORKDIR /keycloak-themes
 COPY keycloak-themes/package.json .
